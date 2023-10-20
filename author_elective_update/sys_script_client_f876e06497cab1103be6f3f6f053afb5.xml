@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="DELETE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description>Use the GetEmail Address Script Include to retrieve the Requested for's email address from the database when the Requested for value changes</description>
+        <field>u_requested_for</field>
+        <global>false</global>
+        <isolate_script>true</isolate_script>
+        <messages/>
+        <name>NeedIt Populate Email Field</name>
+        <order/>
+        <script><![CDATA[function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+   if (isLoading || newValue === '' || newValue == oldValue) {
+      return;
+   }
+
+   //Type appropriate comment here, and begin script below
+	var getEmailAddr = new GlideAjax('GetEmailAddress');
+	//Specify the getEmail method
+	getEmailAddr.addParam('sysparam_name', 'getEmail');
+	// Pass the requested for sys id
+	getEmailAddr.addParam('sysparm_userID', g_form.getValue('u_requested_for'));
+	//Send the request to server
+	getEmailAddr.getXML(populateEmailField);
+	
+	// When the response is back from the server
+  function populateEmailField(response){
+    // Extract the email address from the response, clear any value from the email field, 
+    // set new value in the email field
+    var emailFromScriptInclude = response.responseXML.documentElement.getAttribute("answer");
+    g_form.clearValue('u_requested_for_email');
+    g_form.setValue('u_requested_for_email',emailFromScriptInclude);
+  }
+	
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-10-19 10:34:10</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>f876e06497cab1103be6f3f6f053afb5</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>NeedIt Populate Email Field</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sys_script_client_f876e06497cab1103be6f3f6f053afb5</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-10-19 11:10:44</sys_updated_on>
+        <table>x_58872_needit_needit</table>
+        <type>onChange</type>
+        <ui_type>0</ui_type>
+        <view/>
+    </sys_script_client>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</application>
+        <file_path/>
+        <instance_id>d27a33f5db043090a667cac50596196d</instance_id>
+        <instance_name>dev115488</instance_name>
+        <name>sys_script_client_f876e06497cab1103be6f3f6f053afb5</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update sys_domain="global" table="sys_script_client"&gt;&lt;sys_script_client action="INSERT_OR_UPDATE"&gt;&lt;active&gt;true&lt;/active&gt;&lt;applies_extended&gt;false&lt;/applies_extended&gt;&lt;condition/&gt;&lt;description&gt;Use the GetEmail Address Script Include to retrieve the Requested for's email address from the database when the Requested for value changes&lt;/description&gt;&lt;field&gt;u_requested_for&lt;/field&gt;&lt;global&gt;false&lt;/global&gt;&lt;isolate_script&gt;true&lt;/isolate_script&gt;&lt;messages/&gt;&lt;name&gt;NeedIt Populate Email Field&lt;/name&gt;&lt;order/&gt;&lt;script&gt;&lt;![CDATA[function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+   if (isLoading || newValue === '' || newValue == oldValue) {
+      return;
+   }
+
+   //Type appropriate comment here, and begin script below
+	var getEmailAddr = new GlideAjax('GetEmailAddress');
+	//Specify the getEmail method
+	getEmailAddr.addParam('sysparam_name', 'getEmail');
+	// Pass the requested for sys id
+	getEmailAddr.addParam('sysparm_userID', g_form.getValue('u_requested_for'));
+	//Send the request to server
+	getEmailAddr.getXML(populateEmailField);
+	
+	// When the response is back from the server
+  function populateEmailField(response){
+    // Extract the email address from the response, clear any value from the email field, 
+    // set new value in the email field
+    var emailFromScriptInclude = response.responseXML.documentElement.getAttribute("answer");
+    g_form.clearValue('u_requested_for_email');
+    g_form.setValue('u_requested_for_email',emailFromScriptInclude);
+  }
+	
+}]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_client&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-10-19 10:34:10&lt;/sys_created_on&gt;&lt;sys_domain&gt;global&lt;/sys_domain&gt;&lt;sys_domain_path&gt;/&lt;/sys_domain_path&gt;&lt;sys_id&gt;f876e06497cab1103be6f3f6f053afb5&lt;/sys_id&gt;&lt;sys_mod_count&gt;2&lt;/sys_mod_count&gt;&lt;sys_name&gt;NeedIt Populate Email Field&lt;/sys_name&gt;&lt;sys_overrides/&gt;&lt;sys_package display_value="NeedIt" source="x_58872_needit"&gt;6ead8e780f603200cd674f8ce1050ed1&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="NeedIt"&gt;6ead8e780f603200cd674f8ce1050ed1&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_client_f876e06497cab1103be6f3f6f053afb5&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-10-19 11:10:44&lt;/sys_updated_on&gt;&lt;table&gt;x_58872_needit_needit&lt;/table&gt;&lt;type&gt;onChange&lt;/type&gt;&lt;ui_type&gt;0&lt;/ui_type&gt;&lt;view/&gt;&lt;/sys_script_client&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>1057161148</payload_hash>
+        <record_name>NeedIt Populate Email Field</record_name>
+        <reverted_from/>
+        <source>2c426eef97f531103be6f3f6f053afd8</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-10-19 11:10:44</sys_created_on>
+        <sys_id>f470f0ec97cab1103be6f3f6f053afd8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>18b47a171e90000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-10-19 11:10:44</sys_updated_on>
+        <type>Client Script</type>
+        <update_guid>bc70f0ec9acab110027caa6b97202ed7</update_guid>
+        <update_guid_history>bc70f0ec9acab110027caa6b97202ed7:1057161148,80ad642c6ccab1108023ae64f0a1155e:-327838871,4118a82452cab110a05125b57db778f3:-808502825</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-10-19 11:12:39</sys_created_on>
+        <sys_db_object display_value="" name="sys_script_client">sys_script_client</sys_db_object>
+        <sys_id>5fb561249d114368a5ac0a8061a04c10</sys_id>
+        <sys_metadata>f876e06497cab1103be6f3f6f053afb5</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>NeedIt Populate Email Field</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_parent display_value="NeedIt">3c136a63973931103be6f3f6f053afc2</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_scope_delete display_value="">94872a8897db403e8ee69a431de2fca4</sys_scope_delete>
+        <sys_update_name>sys_script_client_f876e06497cab1103be6f3f6f053afb5</sys_update_name>
+        <sys_update_version display_value="sys_script_client_f876e06497cab1103be6f3f6f053afb5">f470f0ec97cab1103be6f3f6f053afd8</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-10-19 11:12:39</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
